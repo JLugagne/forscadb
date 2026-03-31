@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Instrument Serif', serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Linear-inspired dark palette */
+  --color-surface-0: #0c0c12;
+  --color-surface-1: #13131c;
+  --color-surface-2: #1a1a26;
+  --color-surface-3: #222230;
+  --color-surface-4: #2c2c3c;
+  --color-surface-hover: #242434;
+
+  --color-border-dim: rgba(255, 255, 255, 0.08);
+  --color-border-base: rgba(255, 255, 255, 0.12);
+  --color-border-bright: rgba(255, 255, 255, 0.18);
+  --color-border-focus: rgba(255, 255, 255, 0.25);
+
+  --color-text-primary: #f0eff2;
+  --color-text-secondary: #9e9eb5;
+  --color-text-muted: #6e6e82;
+
+  --color-accent-sql: #6e8efb;
+  --color-accent-nosql: #4ade80;
+  --color-accent-kv: #e879a8;
+
+  --color-status-ok: #4ade80;
+  --color-status-warn: #fbbf24;
+  --color-status-error: #f87171;
+  --color-status-idle: #555566;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.06) transparent;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-surface-0);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.12); }
+
+/* Selection accent */
+::selection {
+  background: rgba(110, 142, 251, 0.25);
+}
+
+/* Modal animations */
+@keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
+@keyframes scale-in { from { opacity: 0; transform: scale(0.97) translateY(8px) } to { opacity: 1; transform: scale(1) translateY(0) } }
+.animate-fade-in { animation: fade-in 0.12s ease-out }
+.animate-scale-in { animation: scale-in 0.15s cubic-bezier(0.16, 1, 0.3, 1) }
+
+/* Resizer handle */
+.resize-handle {
+  width: 1px;
+  background: var(--color-border-dim);
+  cursor: col-resize;
+  transition: background 0.15s;
+  position: relative;
+}
+.resize-handle:hover,
+.resize-handle:active {
+  background: var(--color-border-bright);
+}
+.resize-handle::after {
+  content: '';
+  position: absolute;
+  inset: 0 -3px;
+}
